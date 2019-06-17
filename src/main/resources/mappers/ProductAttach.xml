@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.hs.dgsw.shoppingmall_back.Domain.ProductAttachMapper">
+
+    <select id="findById" parameterType="Long" resultType="HashMap">
+        select a.id, a.refId as productId, p.name, p.explain, p.price , a.filename, a.filepath, a.created, a.updated
+        from product_attach a left join product p on a.refId = p.id
+        where a.id=#{id}
+    </select>
+
+    <insert id="add" parameterType="kr.hs.dgsw.shoppingmall_back.Domain.Attach">
+        insert into product_attach(refId, filename, filepath)
+        values(#{refId}, #{filename}, #{filepath})
+        <selectKey keyProperty="id" resultType="Long">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+
+    <update id="modify" parameterType="kr.hs.dgsw.shoppingmall_back.Domain.Attach">
+        update product_attach
+        set filename=#{filename}, filepath=#{filepath}
+        where id=#{id}
+    </update>
+
+    <delete id="deleteById" parameterType="Long">
+        delete from product_attach where id=#{id}
+    </delete>
+
+</mapper>
