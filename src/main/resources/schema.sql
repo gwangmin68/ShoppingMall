@@ -9,6 +9,10 @@ create table user (
     account varchar(100) not null unique,
     password varchar(100),
     username varchar(30),
+    telephone varchar(100),
+    phone varchar(100),
+    postcode varchar(100),
+    address varchar(100),
     email varchar(50) not null unique,
     created datetime default current_timestamp,
     updated datetime default current_timestamp on update current_timestamp
