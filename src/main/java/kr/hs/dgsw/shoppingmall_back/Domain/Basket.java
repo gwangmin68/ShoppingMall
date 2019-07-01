@@ -9,4 +9,5 @@ public class Basket {
     private Long id;
     private Long user_id;
     private Long product_id;
+    private int product_cnt;
 }

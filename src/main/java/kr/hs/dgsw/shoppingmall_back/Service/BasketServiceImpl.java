@@ -3,10 +3,12 @@ package kr.hs.dgsw.shoppingmall_back.Service;
 import kr.hs.dgsw.shoppingmall_back.Domain.Basket;
 import kr.hs.dgsw.shoppingmall_back.Domain.BasketMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
 
+@Service
 public class BasketServiceImpl  implements  BasketService{
     @Autowired
     BasketMapper basketMapper;
@@ -41,6 +43,7 @@ public class BasketServiceImpl  implements  BasketService{
         HashMap map = new HashMap<String, Object>();
         map.put("user_id", basket.getUser_id());
         map.put("product_id", basket.getProduct_id());
+        map.put("product_cnt", basket.getProduct_cnt());
         return this.basketMapper.addWithHashmap(map);
     }
 }

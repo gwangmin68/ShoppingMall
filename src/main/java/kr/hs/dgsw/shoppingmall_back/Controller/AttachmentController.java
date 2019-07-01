@@ -24,12 +24,12 @@ public class AttachmentController {
     @Autowired
     private AttachService attachService;
 
-    @PostMapping("/api/upload/user/{userId}")
+    @PostMapping("/upload/user/{userId}")
     public HashMap user_upload(@RequestPart MultipartFile srcFile, @PathVariable Long refId) {
         HashMap<String, Object> map = new HashMap<>();
         try {
             String destFilename
-                    = "/Users/dee/Projects/web/web_board/back/upload/"
+                    = "/Users/dee/Projects/web/shoppingmall/back/upload/"
                     + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS_"))
                     + srcFile.getOriginalFilename();
             File destFile = new File(destFilename);
@@ -52,19 +52,17 @@ public class AttachmentController {
         return map;
     }
 
-    @PostMapping("/api/upload/product/{productId}")
+    @PostMapping("/upload/product/{productId}")
     public HashMap product_upload(@RequestPart MultipartFile srcFile, @PathVariable Long refId) {
         HashMap<String, Object> map = new HashMap<>();
         try {
             String destFilename
-                    = "/Products/dee/Projects/web/web_board/back/upload/"
+                    = "/Products/dee/Projects/web/shoppingmall/back/upload/"
                     + LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyyMMddHHmmssSSS_"))
                     + srcFile.getOriginalFilename();
             File destFile = new File(destFilename);
             destFile.getParentFile().mkdirs();
             srcFile.transferTo(destFile);
-            // 아래 빌더 패턴을 사용한 것은 생성자에 파라미터를 바로 넣는 것과 동일하지만 가독성이 좀 더 좋음
-            // Attach attach = new Attach(userId, srcFile.getOriginalFilename(), destFilename);
             Attach attach = Attach.builder()
                     .refId(refId)
                     .filename(srcFile.getOriginalFilename())
@@ -80,7 +78,11 @@ public class AttachmentController {
         return map;
     }
 
-    @GetMapping("/api/image/user/{id}")
+    private void upload(String filename){
+
+    }
+
+    @GetMapping("/image/user/{id}")
     public void user_image(@PathVariable Long id, HttpServletResponse response) {
         try {
             HashMap map = this.attachService.User_findById(id);
@@ -106,7 +108,7 @@ public class AttachmentController {
 
     }
 
-    @GetMapping("/api/image/product/{id}")
+    @GetMapping("/image/product/{id}")
     public void product_image(@PathVariable Long id, HttpServletResponse response) {
         try {
             HashMap map = this.attachService.Product_findById(id);

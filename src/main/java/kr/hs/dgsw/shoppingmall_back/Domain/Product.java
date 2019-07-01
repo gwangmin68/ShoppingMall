@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 public class Product {
     private Long id;
     private String name;
-    private String explain;
+    private String content;
     private int price;
     private LocalDateTime created;
     private LocalDateTime updated;

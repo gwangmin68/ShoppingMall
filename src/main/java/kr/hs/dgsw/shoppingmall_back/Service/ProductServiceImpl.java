@@ -44,7 +44,7 @@ public class ProductServiceImpl implements ProductService{
     public int addWithHashmap(Product product) {
         HashMap map = new HashMap<String, Object>();
         map.put("name", product.getName());
-        map.put("explain", product.getExplain());
+        map.put("content", product.getContent());
         map.put("price", product.getPrice());
         return this.productMapper.addWithHashmap(map);
     }

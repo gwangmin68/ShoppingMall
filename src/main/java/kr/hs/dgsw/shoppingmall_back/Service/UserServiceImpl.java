@@ -10,6 +10,7 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService{
+
     @Autowired
     UserMapper userMapper;
 
@@ -44,6 +45,10 @@ public class UserServiceImpl implements UserService{
         map.put("account", user.getAccount());
         map.put("password", user.getPassword());
         map.put("username", user.getUsername());
+        map.put("telephone", user.getTelephone());
+        map.put("phone", user.getPhone());
+        map.put("postcode", user.getPostcode());
+        map.put("address", user.getAddress());
         map.put("email", user.getEmail());
         return this.userMapper.addWithHashmap(map);
     }

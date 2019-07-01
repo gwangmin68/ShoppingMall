@@ -10,6 +10,7 @@ import java.util.HashMap;
 
 @Service
 public class AttachServiceImpl implements AttachService {
+
     @Autowired
     UserAttachMapper userAttachMapper;
 

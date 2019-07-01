@@ -1,0 +1,118 @@
+GET http://localhost:8080/user/list
+Accept: application/json
+
+###
+
+GET http://localhost:8080/user/6
+Accept: application/json
+###
+
+POST http://localhost:8080/user/add
+Content-Type: application/json
+
+{
+  "account": "user6",
+  "username": "test6",
+  "telephone": "010-0000-0006",
+  "phone": "010-0000-0006",
+  "postcode": "6",
+  "address": "address6",
+  "email": "user6@dgsw.hs.kr"
+}
+###
+PUT http://localhost:8080/user/update
+Content-Type: application/json
+
+{
+  "id": "6",
+  "account": "user6",
+  "username": "test6",
+  "telephone": "010-0000-0006",
+  "phone": "010-0000-0006",
+  "postcode": "6",
+  "address": "address6",
+  "email": "user6@dgsw.hs.kr"
+}
+
+###
+
+DELETE http://localhost:8080/user/delete/6
+Content-Type: application/json
+
+###
+
+
+
+
+GET http://localhost:8080/product/list
+Accept: application/json
+
+###
+
+GET http://localhost:8080/product/5
+Accept: application/json
+###
+
+POST http://localhost:8080/product/add
+Content-Type: application/json
+
+{
+  "name": "product4",
+  "content": "This is product4",
+  "price": 40000
+}
+###
+PUT http://localhost:8080/product/update
+Content-Type: application/json
+
+{
+  "id": 5,
+  "name": "product5",
+  "content": "This is product5",
+  "price": 50000
+}
+
+###
+
+DELETE http://localhost:8080/product/delete/4
+Content-Type: application/json
+
+###
+
+
+
+
+GET http://localhost:8080/basket/list
+Accept: application/json
+
+###
+
+GET http://localhost:8080/basket/1
+Accept: application/json
+###
+
+POST http://localhost:8080/basket/add
+Content-Type: application/json
+
+{
+  "user_id": 1,
+  "product_id": 1,
+  "product_cnt": 3
+}
+###
+PUT http://localhost:8080/basket/update
+Content-Type: application/json
+
+{
+  "id": 1,
+  "user_id": 1,
+  "product_id": 1,
+  "product_cnt": 4
+}
+
+###
+
+DELETE http://localhost:8080/basket/delete/1
+Content-Type: application/json
+
+###
